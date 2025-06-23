@@ -1,0 +1,39 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8386:80"
+    volumes:
+      - .:/var/www/html
+      - ./logs:/var/log/apache2
+    environment:
+      - PHP_DISPLAY_ERRORS=1
+      - PHP_ERROR_REPORTING=E_ALL
+    #restart: unless-stopped # Tự động khởi động lại container nếu nó bị dừng do lỗi (ví dụ: hết bộ nhớ) hoặc khi Docker khởi động, trừ khi người dùng chủ động dừng nó.
+    deploy: # Cấu hình liên quan đến việc triển khai và giới hạn tài nguyên của service
+      resources: # Định nghĩa các giới hạn về tài nguyên
+        limits: # Giới hạn tài nguyên TỐI ĐA mà container được phép sử dụng.
+          cpus: '0.50' # Giới hạn container chỉ được sử dụng tối đa % sức mạnh của một nhân CPU.
+          memory: 32M # Giới hạn bộ nhớ RAM tối đa là MB. Nếu vượt quá, container sẽ bị "killed".
+        reservations: # Lượng tài nguyên TỐI THIỂU được Docker đảm bảo cấp phát cho container.
+          cpus: '0.25' # Đảm bảo container luôn được cấp ít nhất % sức mạnh của một nhân CPU.
+          memory: 16M # Đảm bảo container luôn được cấp ít nhất MB RAM.
+
+  monitoring-ui:
+    image: php:8.0-apache
+    ports:
+      - "8387:80"
+    volumes:
+      - ./monitoring:/var/www/html
+      - ./logs:/var/log/apache2
+
+  monitoring-ws:
+    build:
+      context: .
+      dockerfile: Dockerfile.ws
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./monitoring:/app
+      - ./logs:/var/log/apache2 

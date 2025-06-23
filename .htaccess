@@ -1,0 +1,27 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_URI} ^/(?i:flag\.txt|check\.py|readme\.md|dockerfile|docker-compose\.yml|init-db\.sh|apache-config\.conf)$
+  RewriteRule .* - [F,L]
+</IfModule>
+
+<IfModule mod_evasive20.c>
+    DOSHashTableSize 3097
+    DOSPageCount 2
+    DOSSiteCount 50
+    DOSPageInterval 1
+    DOSSiteInterval 1
+    DOSBlockingPeriod 10
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_USER_AGENT} ^(nmap|nikto|sqlmap) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set X-Debug-Info "false"
+    Header set X-Powered-By "PHP/7.4"
+</IfModule> 

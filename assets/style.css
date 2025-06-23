@@ -1,0 +1,211 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --background-color: #ecf0f1;
+    --text-color: #2c3e50;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    padding: 20px;
+    transition: background-color 0.4s, color 0.4s;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2.5em;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin: 20px 0;
+    font-size: 1.8em;
+}
+
+.error {
+    color: var(--accent-color);
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    background-color: #fde8e8;
+    font-weight: 500;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+form div {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.notice {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: var(--border-radius);
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.notice h2 {
+    color: #856404;
+    margin-bottom: 10px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    margin-right: 10px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #2980b9;
+}
+
+.profile-info {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 30px;
+}
+
+.profile-info p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.preferences {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+}
+
+.actions {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .button {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+.theme-dark {
+    background-color: #222 !important;
+    color: #eee !important;
+}
+.theme-dark .container,
+.theme-dark .profile-info,
+.theme-dark .preferences {
+    background-color: #2c2c2c !important;
+    color: #eee !important;
+    transition: background-color 0.4s, color 0.4s;
+}
+.theme-dark h1, .theme-dark h2, .theme-dark label {
+    color: #fff !important;
+}
+.theme-dark .error {
+    background-color: #4b2323 !important;
+    color: #ffb3b3 !important;
+    border-color: #e74c3c !important;
+}
+.theme-dark .notice {
+    background-color: #333 !important;
+    color: #ffe082 !important;
+    border-color: #ffe082 !important;
+}
+
+.font-small { font-size: 14px !important; }
+.font-medium { font-size: 18px !important; }
+.font-large { font-size: 22px !important; } 
